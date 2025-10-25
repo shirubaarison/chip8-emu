@@ -1,0 +1,7 @@
+compile_commands.json
+obj/
+chip8-emu
+build/
+.cache
+obj/
+roms/
