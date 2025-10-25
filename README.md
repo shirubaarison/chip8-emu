@@ -6,7 +6,7 @@ The "Hello World" of emulators.
 
 ## Requirements
 
-- CMake (3.10+)
+- CMake (3.25+)
 
 GLFW and GLAD are included in `/vendor`, so no additional installation is needed.
 
