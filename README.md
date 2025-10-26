@@ -10,6 +10,8 @@ The "Hello World" of emulators.
 
 GLFW and GLAD are included in `/vendor`, so no additional installation is needed.
 
+![Pong example](screenshots/pong.png "Pong")
+
 ## Build
 
 ```bash
@@ -21,13 +23,13 @@ make
 ## How to run
 
 ```bash
-./chip8_emu <path_to_rom>
+./chip8-emu <path_to_rom>
 ```
 
 ### Example
 
 ```bash
-./chip8_emu roms/pong.ch8
+./chip8-emu roms/pong.ch8
 ```
 
 ## ROMs
@@ -41,7 +43,9 @@ You can find ROMs in
 Be aware that some won't work because the current implementation doesn't support Super CHIP-8.
 
 ## Controls
+
 The CHIP-8 keypad is mapped to:
+
 ```
 1 2 3 C       →    1 2 3 4
 4 5 6 D       →    Q W E R
@@ -56,6 +60,11 @@ A 0 B F       →    Z X C V
 - [CHIP-8 Wikipedia](https://en.wikipedia.org/wiki/CHIP-8)
 
 - [Interpreting CPU Instructions via an Array of Function Pointers](https://multigesture.net/wp-content/uploads/mirror/zenogais/FunctionPointers.htm)
+
+## Screenshots
+
+![Bowling example](screenshots/bowling.png "Bowling")
+![Tetris example](screenshots/tetris.png "Tetris")
 
 ## License
 
