@@ -8,7 +8,7 @@ The "Hello World" of emulators.
 
 - CMake (3.25+)
 
-GLFW and GLAD are included in `/vendor`, so no additional installation is needed.
+[GLFW](https://www.glfw.org/), [GLAD](https://glad.dav1d.de/) and [raudio](https://github.com/raysan5/raudio) are included in `/vendor`, so no additional installation is needed.
 
 ![Pong example](screenshots/pong.png "Pong")
 

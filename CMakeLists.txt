@@ -18,24 +18,34 @@ target_include_directories(glad PUBLIC vendor/glad/include)
 # GLFW
 add_subdirectory(vendor/glfw)
 
+# raudio
+add_library(raudio vendor/raudio/src/raudio.c)
+target_include_directories(raudio PUBLIC vendor/raudio/src)
+target_compile_definitions(raudio PRIVATE 
+  RAUDIO_STANDALONE
+  SUPPORT_MODULE_RAUDIO
+  SUPPORT_FILEFORMAT_WAV
+)
+
 # Executable
 add_executable(chip8-emu ${SOURCES})
 target_include_directories(chip8-emu PRIVATE include)
 
 target_compile_options(chip8-emu PRIVATE
-    -Wall 
-    -Wextra 
-    -Wpedantic 
-    -Wshadow 
+    -Wall
+    -Wextra
+    -Wpedantic
+    -Wshadow
     -g
 )
 
-target_link_libraries(chip8-emu PRIVATE glad glfw)
+target_link_libraries(chip8-emu PRIVATE glad glfw raudio)
+
 # I didn't test this, I only use Linux
 if (APPLE)
-    target_link_libraries(chip8-emu PRIVATE "-framework OpenGL")
+  target_link_libraries(chip8-emu PRIVATE "-framework OpenGL" "-framework IOKit" "-framework Cocoa")
 elseif (WIN32)
-    target_link_libraries(chip8-emu PRIVATE opengl32 gdi32)
+  target_link_libraries(chip8-emu PRIVATE opengl32 gdi32)
 else()
-    target_link_libraries(chip8-emu PRIVATE GL m pthread dl)
+  target_link_libraries(chip8-emu PRIVATE GL m pthread dl asound vorbis vorbisfile)
 endif()

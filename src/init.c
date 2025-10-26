@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <GLFW/glfw3.h>
 #include <string.h>
+#include <raudio.h>
 
 #include "chip8.h"
 
@@ -15,25 +16,31 @@
 static uint8_t keymap[GLFW_KEY_LAST + 1];
 
 static void initKeymap(void) {
-    for (int i = 0; i <= GLFW_KEY_LAST; i++)
-        keymap[i] = 0xFF;
+  for (int i = 0; i <= GLFW_KEY_LAST; i++)
+    keymap[i] = 0xFF;
 
-    keymap[GLFW_KEY_X] = 0x0;
-    keymap[GLFW_KEY_1] = 0x1;
-    keymap[GLFW_KEY_2] = 0x2;
-    keymap[GLFW_KEY_3] = 0x3;
-    keymap[GLFW_KEY_4] = 0xC;
-    keymap[GLFW_KEY_Q] = 0x4;
-    keymap[GLFW_KEY_W] = 0x5;
-    keymap[GLFW_KEY_E] = 0x6;
-    keymap[GLFW_KEY_R] = 0xD;
-    keymap[GLFW_KEY_A] = 0x7;
-    keymap[GLFW_KEY_S] = 0x8;
-    keymap[GLFW_KEY_D] = 0x9;
-    keymap[GLFW_KEY_F] = 0xE;
-    keymap[GLFW_KEY_Z] = 0xA;
-    keymap[GLFW_KEY_C] = 0xB;
-    keymap[GLFW_KEY_V] = 0xF;
+  keymap[GLFW_KEY_X] = 0x0;
+  keymap[GLFW_KEY_1] = 0x1;
+  keymap[GLFW_KEY_2] = 0x2;
+  keymap[GLFW_KEY_3] = 0x3;
+  keymap[GLFW_KEY_4] = 0xC;
+  keymap[GLFW_KEY_Q] = 0x4;
+  keymap[GLFW_KEY_W] = 0x5;
+  keymap[GLFW_KEY_E] = 0x6;
+  keymap[GLFW_KEY_R] = 0xD;
+  keymap[GLFW_KEY_A] = 0x7;
+  keymap[GLFW_KEY_S] = 0x8;
+  keymap[GLFW_KEY_D] = 0x9;
+  keymap[GLFW_KEY_F] = 0xE;
+  keymap[GLFW_KEY_Z] = 0xA;
+  keymap[GLFW_KEY_C] = 0xB;
+  keymap[GLFW_KEY_V] = 0xF;
+
+  keymap[GLFW_KEY_UP] = 0x2;
+  keymap[GLFW_KEY_DOWN] = 0x8;
+  keymap[GLFW_KEY_LEFT] = 0x4;
+  keymap[GLFW_KEY_RIGHT] = 0x6;
+
 }
 
 static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {

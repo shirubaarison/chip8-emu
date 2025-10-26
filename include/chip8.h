@@ -1,6 +1,7 @@
 #ifndef chip_8_h
 #define chip_8_h
 
+#include "raudio.h"
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -26,6 +27,8 @@ typedef struct {
   uint8_t key[KEY_SIZE];
 
   bool drawFlag;
+
+  Sound beep;
 } chip8;
 
 void chip8_initialize(chip8* chip);

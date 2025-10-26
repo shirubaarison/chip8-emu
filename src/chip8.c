@@ -1,4 +1,5 @@
 #include "chip8.h"
+#include "raudio.h"
 
 #include <stdint.h>
 #include <stdio.h>
@@ -49,6 +50,8 @@ void chip8_initialize(chip8* chip) {
   chip->delay_timer = 0;
   chip->sound_timer = 0;
   chip->drawFlag = true;
+
+  chip->beep = LoadSound("../assets/beep.wav");
 
   srand(time(NULL));
 }
@@ -113,7 +116,7 @@ void chip8_emulateCycle(chip8* chip) {
 
   if (chip->sound_timer > 0) {
     if (chip->sound_timer == 1)
-      fprintf(stdout, "BEEP!\n");
+      PlaySound(chip->beep);
     --chip->sound_timer;
   }
 

@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <raudio.h>
 
 #include "chip8.h"
 #include "init.h"
@@ -13,6 +14,8 @@ int main(int argc, char *argv[]) {
     fprintf(stderr, "Usage: %s <ROM file>.\n", argv[0]);
     return EXIT_FAILURE;
   }
+ 
+  InitAudioDevice();
  
   chip8 chip;
   chip8_initialize(&chip);
@@ -34,6 +37,9 @@ int main(int argc, char *argv[]) {
 
   glfwDestroyWindow(window);
   glfwTerminate();
+
+  UnloadSound(chip.beep);
+  CloseAudioDevice();
 
   return EXIT_SUCCESS;
 }
