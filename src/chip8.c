@@ -325,8 +325,8 @@ static void chip8_DXYN(chip8* chip) {
 
     for (int xline = 0; xline < 8; xline++) {
       if ((pixel & (0x80 >> xline)) != 0) {
-        uint16_t x = (X + xline) % WIDTH;
-        uint16_t y = (Y + yline) % HEIGHT;
+        uint16_t x = (X + xline);
+        uint16_t y = (Y + yline);
         uint16_t index = x + (y * WIDTH);
 
         // check for collision (pixel being turned off)
