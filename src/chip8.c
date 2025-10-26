@@ -84,14 +84,14 @@ void chip8_load(chip8* chip, const char* path) {
     exit(1);
   }
 
-  for (long i = 0; i < fileSize; i++) {
+  for (size_t i = 0; i < fileSize; i++) {
     chip->memory[i + PROGRAM_START] = buffer[i];
   }
 
   free(buffer);
   fclose(file);
 
-#undef PADDING
+#undef PROGRAM_START
 }
 
 Instruction chip8_table[];
@@ -116,6 +116,7 @@ void chip8_emulateCycle(chip8* chip) {
       fprintf(stdout, "BEEP!\n");
     --chip->sound_timer;
   }
+
 #undef CHIP8_FETCH
 }
 
